@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-blockchatapp-dev-bb347-authRole",
+      "UnauthRoleArn": "arn:aws:iam::824403382935:role/amplify-blockchatapp-dev-bb347-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::824403382935:role/amplify-blockchatapp-dev-bb347-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-blockchatapp-dev-bb347-deployment",
+      "UnauthRoleName": "amplify-blockchatapp-dev-bb347-unauthRole",
+      "StackName": "amplify-blockchatapp-dev-bb347",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:824403382935:stack/amplify-blockchatapp-dev-bb347/46acfd30-7c52-11f0-8be5-0287527123b5",
+      "AmplifyAppId": "d2seck5v3la3ad"
+    },
+    "categories": {
+      "auth": {
+        "blockchatAuth": {}
+      }
+    }
+  }
+}

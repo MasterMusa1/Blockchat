@@ -1,0 +1,44 @@
+type Blog
+  @model
+  @auth(rules: [
+    { allow: owner },
+    { allow: groups, groups: ["Admin"] }
+  ])
+{
+  id: ID!
+  name: String! @index(name: "byName", sortKeyFields: ["createdAt"])
+  posts: [Post] @hasMany
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Post
+  @model
+  @auth(rules: [
+    { allow: owner },
+    { allow: groups, groups: ["Admin"] }
+  ])
+{
+  id: ID!
+  title: String! @index(name: "byTitle", sortKeyFields: ["createdAt"])
+  blogID: ID! @index(name: "byBlog")
+  blog: Blog @belongsTo(fields: ["blogID"])
+  comments: [Comment] @hasMany
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Comment
+  @model
+  @auth(rules: [
+    { allow: owner },
+    { allow: groups, groups: ["Admin"] }
+  ])
+{
+  id: ID!
+  postID: ID! @index(name: "byPost")
+  post: Post @belongsTo(fields: ["postID"])
+  content: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
