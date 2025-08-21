@@ -1,0 +1,99 @@
+type User @model @auth(rules: [{allow: public}]) {
+  walletAddress: ID! @primaryKey
+  displayName: String
+  bio: String
+  credits: Int
+  ownedNfts: AWSJSON
+  socialLinks: AWSJSON
+  storageCapacity: Float
+  storageUsed: Float
+  files: AWSJSON
+  isVerified: Boolean
+  chatList: AWSJSON
+  following: AWSJSON
+  followers: AWSJSON
+  blockedUsers: AWSJSON
+  createdAt: AWSDateTime
+}
+
+type Message @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  chatId: ID! @index(name: "byChat", queryField: "messagesByChat", sortKeyFields: ["timestamp"])
+  sender: String!
+  text: String
+  image: String
+  reactions: AWSJSON
+  poll: AWSJSON
+  timestamp: AWSDateTime!
+}
+
+type Nft @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  marketType: String! @index(name: "byMarketType", queryField: "nftsByMarketType", sortKeyFields: ["createdAt"])
+  name: String!
+  price: String!
+  image: String
+  description: String
+  seller: String!
+  isFeatureNft: Boolean
+  quantity: Int
+  featureName: String
+  isUserMinted: Boolean
+  isListed: Boolean
+  mintDate: AWSDateTime
+  createdAt: AWSDateTime!
+}
+
+type ActivityFeedItem @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  type: String!
+  user: AWSJSON
+  content: String
+  nft: AWSJSON
+  likes: Int
+  comments: Int
+  commentData: AWSJSON
+  timestamp: AWSDateTime! @index(name: "byTimestamp", queryField: "activityFeedByTimestamp", sortKeyFields: ["id"])
+}
+
+type ChatMetadata @model @auth(rules: [{allow: public}]) {
+  id: ID! @primaryKey
+  name: String!
+  logo: String
+  creator: String!
+  contractAddress: String
+  isOfficial: Boolean
+}
+
+type TokenPerformanceUpdate @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user: AWSJSON
+  tokenSymbol: String!
+  content: String!
+  likes: Int
+  comments: Int
+  createdAt: AWSDateTime!
+}
+
+type Report @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  type: String
+  reason: String
+  details: String
+  content: String
+  reporterWallet: String
+  reportedUserWallet: String
+  status: String @index(name: "byStatus", queryField: "reportsByStatus", sortKeyFields: ["createdAt"])
+  createdAt: AWSDateTime!
+}
+
+type AdminSettings @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  messagingCosts: AWSJSON
+  featureToggles: AWSJSON
+}
+
+type Banners @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  promotionalBanners: AWSJSON
+}

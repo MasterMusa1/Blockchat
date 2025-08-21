@@ -1,0 +1,293 @@
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background-attachment: fixed;
+}
+
+:root {
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  
+  /* Light Theme (Default & Customizable) */
+  --primary-color: #008080; /* Bold Teal */
+  --accent-color: #32CD32; /* Fresh Lime Green */
+  --button-alert-color: #FF6347; /* Vibrant Coral */
+  --background-color: #F5F5F5; /* Cool Gray */
+  --surface-color: #FFFFFF; /* Clean White */
+  --text-color: #2c3e50; /* Darker Gray for text */
+  --text-secondary: #A9A9A9; /* Lighter Gray */
+  --border-color: #E0E0E0;
+  --logo-url: url('https://i.imgur.com/siB8l8m.png');
+}
+
+html[data-theme='dark'] {
+  /* Dark Theme Palette (not customized by user color pickers) */
+  --button-alert-color: #f44336; /* Red */
+  --background-color: #121212; /* Very dark gray */
+  --surface-color: #1E1E1E; /* Dark gray */
+  --text-color: #E0E0E0; /* Light gray */
+  --text-secondary: #888888; /* Medium gray */
+  --border-color: #333333;
+}
+
+
+.wallet-adapter-button {
+  background-color: var(--button-alert-color) !important;
+  color: white !important;
+  font-weight: bold !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.wallet-adapter-button:hover {
+  background-color: #E55A40 !important; /* Darker Coral */
+}
+
+html[data-theme='dark'] .wallet-adapter-button:hover {
+    background-color: #d32f2f !important;
+}
+
+.wallet-adapter-modal-wrapper {
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+.wallet-adapter-modal-container {
+    background: var(--surface-color) !important;
+    border-radius: 12px !important;
+    transition: background-color 0.3s;
+}
+
+.wallet-adapter-modal-title {
+    color: var(--text-color) !important;
+    transition: color 0.3s;
+}
+
+.wallet-adapter-modal-list li button {
+    background: var(--background-color) !important;
+    color: var(--text-color) !important;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.wallet-adapter-modal-list li button:hover {
+    background: var(--border-color) !important;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Storage Page Styles */
+.storage-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.storage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.upload-btn {
+  background-color: var(--button-alert-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.breadcrumbs {
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+}
+.breadcrumb-link {
+  color: var(--primary-color);
+  cursor: pointer;
+  font-weight: 500;
+}
+.storage-usage {
+  background-color: var(--surface-color);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.usage-bar-bg {
+  height: 10px;
+  background-color: var(--background-color);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.usage-bar-fg {
+  height: 100%;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+}
+.usage-text {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.file-browser {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+.file-browser-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.file-browser-table th {
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.file-browser-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+.file-browser-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.file-item-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.file-item-row:hover {
+  background-color: var(--background-color);
+}
+.file-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 500;
+}
+.empty-folder {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+}
+
+/* Context Menu */
+.context-menu {
+  position: fixed;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 5px 0;
+  min-width: 150px;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 10px 15px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.context-menu-item:hover {
+  background-color: var(--background-color);
+}
+
+.context-menu-item.delete {
+  color: var(--button-alert-color);
+}
+
+.context-menu-item.delete:hover {
+  background-color: rgba(255, 99, 71, 0.1);
+}
+
+/* Modal styles for rename */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--surface-color);
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  color: var(--text-color);
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-submit-btn {
+  background-color: var(--button-alert-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
